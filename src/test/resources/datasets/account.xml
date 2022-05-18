@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <!-- NOTE: The activeFlag maps to a column of a different name: ACTIVE. This is done on purpose. -->
+    <Account id="1" balance="100" firstname="John" lastname="Doe" active="true" />
+    <Account id="2" balance="1100" firstname="Jane" lastname="Doe" active="true" />
+    <Account id="3" balance="100" firstname="Mary Jane" lastname="Watson" active="false" />
+</dataset>
