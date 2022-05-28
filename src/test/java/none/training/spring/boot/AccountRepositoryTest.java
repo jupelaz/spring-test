@@ -31,7 +31,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @DirtiesContext
 public class AccountRepositoryTest {
 
-    Logger log = LoggerFactory.getLogger(AccountRepositoryTest.class);
+    final Logger log = LoggerFactory.getLogger(AccountRepositoryTest.class);
 
     protected static final String DATASET = "classpath:datasets/account.xml";
     @Autowired

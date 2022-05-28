@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "ACCOUNT")
@@ -105,11 +106,11 @@ public class Account {
         Account account = (Account) o;
 
         if (activeFlag != account.activeFlag) return false;
-        if (accountId != null ? !accountId.equals(account.accountId) : account.accountId != null) return false;
-        if (balance != null ? !balance.equals(account.balance) : account.balance != null) return false;
-        if (ownerFirstName != null ? !ownerFirstName.equals(account.ownerFirstName) : account.ownerFirstName != null)
+        if (!Objects.equals(accountId, account.accountId)) return false;
+        if (!Objects.equals(balance, account.balance)) return false;
+        if (!Objects.equals(ownerFirstName, account.ownerFirstName))
             return false;
-        return ownerLastName != null ? ownerLastName.equals(account.ownerLastName) : account.ownerLastName == null;
+        return Objects.equals(ownerLastName, account.ownerLastName);
     }
 
     @Override
