@@ -1,8 +1,10 @@
-package none.training.spring.boot;
+package none.training.spring.boot.service;
 
+import none.training.spring.boot.dao.AccountRepository;
 import none.training.spring.boot.exception.AccountInvalidException;
 import none.training.spring.boot.exception.AccountNotFoundException;
 import none.training.spring.boot.exception.InvalidOwnerLastNameException;
+import none.training.spring.boot.model.Account;
 import none.training.spring.boot.service.AccountServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

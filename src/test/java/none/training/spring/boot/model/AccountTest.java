@@ -1,5 +1,6 @@
-package none.training.spring.boot;
+package none.training.spring.boot.model;
 
+import none.training.spring.boot.model.Account;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

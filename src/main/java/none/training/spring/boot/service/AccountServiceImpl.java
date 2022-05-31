@@ -1,8 +1,8 @@
 package none.training.spring.boot.service;
 
-import none.training.spring.boot.Account;
+import none.training.spring.boot.model.Account;
 import none.training.spring.boot.AccountConstants;
-import none.training.spring.boot.AccountRepository;
+import none.training.spring.boot.dao.AccountRepository;
 import none.training.spring.boot.exception.AccountInvalidException;
 import none.training.spring.boot.exception.AccountNotFoundException;
 import none.training.spring.boot.exception.InvalidOwnerLastNameException;

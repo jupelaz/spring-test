@@ -1,5 +1,6 @@
-package none.training.spring.boot;
+package none.training.spring.boot.dao;
 
+import none.training.spring.boot.model.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

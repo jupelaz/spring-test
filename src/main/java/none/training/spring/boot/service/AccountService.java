@@ -1,6 +1,6 @@
 package none.training.spring.boot.service;
 
-import none.training.spring.boot.Account;
+import none.training.spring.boot.model.Account;
 
 import java.util.List;
 import java.util.Optional;

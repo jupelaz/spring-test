@@ -1,4 +1,4 @@
-package none.training.spring.boot;
+package none.training.spring.boot.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

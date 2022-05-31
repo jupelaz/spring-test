@@ -1,5 +1,6 @@
-package none.training.spring.boot;
+package none.training.spring.boot.dao;
 
+import none.training.spring.boot.model.Account;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
