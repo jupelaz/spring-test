@@ -6,7 +6,9 @@ import none.training.spring.boot.exception.InvalidOwnerLastNameException;
 import none.training.spring.boot.service.AccountServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +18,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class AccountServiceTest {
 
@@ -45,6 +48,9 @@ public class AccountServiceTest {
         //Return the same account as the one saved
         when(repository.save(any(Account.class))).thenAnswer(invocation -> invocation.getArguments()[0]);
 
+        //Return the same account as the one saved
+        when(repository.saveAndFlush(any(Account.class))).thenAnswer(invocation -> invocation.getArguments()[0]);
+
         // Find by id: return a new account of id 1 when fetched
         when(repository.findById("1")).thenReturn(Optional.of(account1));
 
@@ -52,7 +58,7 @@ public class AccountServiceTest {
         when(repository.findById("2")).thenReturn(Optional.of(account2));
 
         // Find by id: return null when account of 7 is fetched
-        when(repository.findById("7")).thenReturn(Optional.ofNullable(null));
+        when(repository.findById("7")).thenReturn(Optional.empty());
 
         // Find all: return a list of 2 accounts
         when(repository.findAll()).thenReturn(List.of(account1, account2));
@@ -61,14 +67,15 @@ public class AccountServiceTest {
         when(repository.findByOwnerLastName("Doe")).thenReturn(List.of(account1, account2));
 
         //Find by active flag should return a list of 1 account
-        when(repository.findByActiveFlagTrue()).thenReturn(List.of(account1));
+        when(repository.findByActiveFlagTrue()).thenReturn(List.of(account1, account2));
 
         //Find by owner last name and active flag should return a list of 1 account
-        when(repository.findByActiveFlagTrueAndOwnerLastName("Doe")).thenReturn(List.of(account1));
+        when(repository.findByActiveFlagTrueAndOwnerLastName("Doe")).thenReturn(List.of(account1, account2));
 
         //Find by owner first name should return a list of 1 account
         when(repository.findByOwnerFirstNameContaining("John")).thenReturn(Optional.of(List.of(account1)));
 
+        accountService = new AccountServiceImpl(repository);
     }
 
     @Test
@@ -96,7 +103,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    void getNonExistingAccountById() {
+    void getNonExistingAccountById(){
         assertThrows(
                 AccountInvalidException.class,
                 () -> accountService.getAccount(null),

@@ -33,9 +33,7 @@ public class AccountServiceImpl implements AccountService{
         return repository
                 .findById(accountId)
                 .orElseThrow(() ->
-                        new AccountNotFoundException(
-                                AccountConstants.INVALID_ACCOUNT,
-                                accountId));
+                        new AccountInvalidException(AccountConstants.INVALID_ACCOUNT));
     }
 
 
